@@ -1,43 +1,34 @@
 const mongoose = require("mongoose");
 
 const orderhistorySchema = new mongoose.Schema({
-    items: [
-      {
-        productId: {
-          type: String,
-          required: true,
+    products: [
+        {
+            productId: String,
+            productName: String,
+            quantity: Number,
+            price: Number,
+            variant: {
+                color: String,
+                ram: String,
+                storage: String,
+            },
         },
-        title: {
-          type: String,
-          required: true,
-        },
-        price: {
-          type: Number,
-          required: true,
-        },
-        quantity: {
-          type: Number,
-          required: true,
-        },
-        variant: {
-          color: { type: String },
-          ram: { type: String },
-          storage: { type: String },
-        },
-      },
     ],
-    address: {
-        type: String,
-        required: true,
+    totalAmount: Number,
+    selectedAddress: {
+        name: String,
+        phone: String,
+        addressLine: String,
+        city: String,
+        state: String,
+        pincode: String,
     },
-    totalAmount: {
-        type: Number,
-        required: true,
+    orderDate: {
+        type: Date,
+        default: Date.now,
     },
 },
-    {
-        timestamps: true,
-    }
+    { timestamps: true }
 );
 
 const orderhistoryData = mongoose.model("orderhistoryData", orderhistorySchema);
