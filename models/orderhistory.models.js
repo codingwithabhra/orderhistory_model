@@ -1,33 +1,31 @@
 const mongoose = require("mongoose");
 
 const orderhistorySchema = new mongoose.Schema({
-    items: {
+    items: [
+      {
         productId: {
-            type: String,
-            required: true,
+          type: String,
+          required: true,
         },
         title: {
-            type: String,
-            required: true,
+          type: String,
+          required: true,
         },
         price: {
-            type: Number,
-            required: true,
+          type: Number,
+          required: true,
         },
         quantity: {
-            type: Number,
-            required: true,
+          type: Number,
+          required: true,
         },
         variant: {
-            color: String,
-            ram: String,
-            storage: String,
+          color: { type: String },
+          ram: { type: String },
+          storage: { type: String },
         },
-    },
-    totalQuantity: {
-        type: Number,
-        required: true,
-    },
+      },
+    ],
     address: {
         type: String,
         required: true,
