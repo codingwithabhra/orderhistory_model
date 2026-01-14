@@ -54,7 +54,7 @@ async function getAllOrders() {
 app.get("/orderhistory", async (req, res) => {
     try {
         const getData = await getAllOrders();
-        if (getData != 0) {
+        if (getData.length != 0) {
             res.json(getData);
         } else {
             res.status(404).json({ error: "Data not found" });
